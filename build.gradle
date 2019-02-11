@@ -1,10 +1,28 @@
 apply plugin: 'java'
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.aspectj:gradle-aspectj:0.1.6"
+    }
+}
+
+project.ext {
+    aspectjVersion = '1.8.10'
+}
+
+apply plugin: "aspectj.gradle"
 
 repositories {
     mavenLocal()
+//    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
     mavenCentral()
 }
 
 dependencies {
     compile 'junit:junit:4.12'
+    compile group: 'cglib', name: 'cglib', version: '3.2.4'
 }
